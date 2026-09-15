@@ -1095,3 +1095,257 @@ button:hover {
     color: #f29abb;
     font-size: 13px;
 }
+
+/* 💗 КРАСИВЫЙ ЭКРАН СЕКРЕТНОГО ВХОДА */
+
+.secret-screen {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(190, 90, 145, 0.18),
+            transparent 35%),
+        radial-gradient(circle at 15% 20%,
+            rgba(216, 181, 232, 0.10),
+            transparent 30%),
+        radial-gradient(circle at 85% 80%,
+            rgba(246, 182, 208, 0.10),
+            transparent 30%),
+        #080609;
+}
+
+.secret-screen::before,
+.secret-screen::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(246, 182, 208, 0.07);
+    filter: blur(70px);
+    pointer-events: none;
+    animation: secretGlow 8s ease-in-out infinite;
+}
+
+.secret-screen::before {
+    left: -100px;
+    top: 10%;
+}
+
+.secret-screen::after {
+    right: -100px;
+    bottom: 10%;
+    animation-delay: -4s;
+}
+
+@keyframes secretGlow {
+    0%, 100% {
+        transform: scale(1);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+.secret-box {
+    position: relative;
+    z-index: 2;
+    width: min(400px, 82%);
+    padding: 45px 30px;
+    border: 1px solid rgba(246, 182, 208, 0.18);
+    border-radius: 28px;
+    background: rgba(20, 10, 17, 0.72);
+
+    box-shadow:
+        0 0 40px rgba(246, 182, 208, 0.08),
+        inset 0 0 40px rgba(216, 181, 232, 0.025);
+
+    backdrop-filter: blur(15px);
+
+    animation: secretBoxAppear 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes secretBoxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.secret-flower {
+    font-size: 52px;
+    margin-bottom: 18px;
+    color: #f6b6d0;
+
+    text-shadow:
+        0 0 8px rgba(246, 182, 208, .8),
+        0 0 25px rgba(216, 181, 232, .55);
+
+    animation: secretFlower 4s ease-in-out infinite;
+}
+
+@keyframes secretFlower {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+
+.secret-box h2 {
+    color: #f8c5d9;
+    font-weight: 400;
+    font-size: 25px;
+    letter-spacing: .3px;
+
+    text-shadow:
+        0 0 15px rgba(246, 182, 208, .25);
+
+    margin-bottom: 12px;
+}
+
+.secret-box p {
+    color: #cfa2b5;
+    font-size: 14px;
+    letter-spacing: .4px;
+    margin-bottom: 28px;
+}
+
+.secret-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+
+    border: 1px solid rgba(246, 182, 208, .25);
+    border-radius: 30px;
+    outline: none;
+
+    background: rgba(255, 255, 255, .035);
+    color: #f8c5d9;
+
+    text-align: center;
+    font-size: 16px;
+
+    transition:
+        border .4s ease,
+        box-shadow .4s ease,
+        background .4s ease;
+}
+
+.secret-input:focus {
+    border-color: rgba(246, 182, 208, .7);
+
+    background: rgba(246, 182, 208, .045);
+
+    box-shadow:
+        0 0 12px rgba(246, 182, 208, .12),
+        0 0 30px rgba(216, 181, 232, .08);
+}
+
+.secret-input::placeholder {
+    color: #876576;
+}
+
+.secret-button {
+    margin-top: 18px;
+    padding: 13px 34px;
+
+    border: 1px solid rgba(246, 182, 208, .65);
+    border-radius: 30px;
+
+    background: rgba(246, 182, 208, .035);
+    color: #f6b6d0;
+
+    font-size: 15px;
+    letter-spacing: .3px;
+    cursor: pointer;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        background .4s ease;
+}
+
+.secret-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(246, 182, 208, .09);
+
+    box-shadow:
+        0 0 15px rgba(246, 182, 208, .18),
+        0 0 35px rgba(216, 181, 232, .10);
+}
+
+.secret-button:active {
+    transform: scale(.97);
+}
+
+.secret-error {
+    height: 20px;
+    margin-top: 14px;
+
+    color: #ef9abb;
+    font-size: 13px;
+
+    text-shadow:
+        0 0 10px rgba(239, 154, 187, .25);
+}
+
+.secret-box::before,
+.secret-box::after {
+    content: "♡";
+    position: absolute;
+    color: rgba(246, 182, 208, .35);
+    font-size: 22px;
+
+    animation: tinyHeart 5s ease-in-out infinite;
+}
+
+.secret-box::before {
+    left: 18px;
+    top: 18px;
+}
+
+.secret-box::after {
+    right: 18px;
+    bottom: 18px;
+    animation-delay: -2.5s;
+}
+
+@keyframes tinyHeart {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: .8;
+    }
+}
+
+@media (max-width: 600px) {
+    .secret-box {
+        padding: 38px 22px;
+        border-radius: 24px;
+    }
+
+    .secret-box h2 {
+        font-size: 22px;
+    }
+
+    .secret-flower {
+        font-size: 46px;
+    }
+}
