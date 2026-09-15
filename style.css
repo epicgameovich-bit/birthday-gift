@@ -1349,3 +1349,275 @@ button:hover {
         font-size: 46px;
     }
 }
+
+/* 💗 СЧЁТЧИК */
+
+.together-counter {
+    width: min(850px, 90%);
+    margin: 45px auto 0;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.counter-title {
+    color: #f8c5d9;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 15px rgba(246,182,208,.25);
+}
+
+.counter-time {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.counter-item {
+    min-width: 105px;
+    padding: 18px 14px;
+
+    border: 1px solid rgba(246,182,208,.2);
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.025);
+
+    box-shadow:
+        0 0 20px rgba(246,182,208,.05),
+        inset 0 0 20px rgba(216,181,232,.02);
+}
+
+.counter-item strong {
+    display: block;
+
+    color: #f6b6d0;
+    font-size: 28px;
+    font-weight: 400;
+
+    text-shadow:
+        0 0 12px rgba(246,182,208,.35);
+}
+
+.counter-item span {
+    display: block;
+    margin-top: 5px;
+
+    color: #b98da1;
+    font-size: 12px;
+}
+
+.counter-date {
+    margin-top: 22px;
+
+    color: #a9788d;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .counter-item {
+        min-width: 75px;
+        padding: 15px 10px;
+    }
+
+    .counter-item strong {
+        font-size: 23px;
+    }
+
+    .counter-title {
+        font-size: 22px;
+    }
+}
+
+/* 💗 КНОПКА ПОСЛЕ СЧЁТЧИКА */
+
+.birthday-button {
+    margin-top: 30px;
+    padding: 13px 32px;
+
+    border: 1px solid rgba(246,182,208,.6);
+    border-radius: 30px;
+
+    background: rgba(246,182,208,.035);
+    color: #f6b6d0;
+
+    font-size: 15px;
+    letter-spacing: .3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(246,182,208,.06);
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+}
+
+.birthday-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(246,182,208,.09);
+
+    box-shadow:
+        0 0 20px rgba(246,182,208,.18),
+        0 0 40px rgba(216,181,232,.08);
+}
+
+.birthday-button:active {
+    transform: scale(.96);
+}
+
+
+/* 🎂 ФИНАЛЬНОЕ ПОЗДРАВЛЕНИЕ */
+
+#birthdayCelebration {
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(246,182,208,.13),
+            transparent 45%
+        ),
+        #080609;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+
+    transition:
+        transform 1s cubic-bezier(.77,0,.18,1),
+        opacity 1s ease,
+        visibility 1s;
+}
+
+#birthdayCelebration.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.birthday-message {
+    position: relative;
+    z-index: 5;
+
+    width: min(600px, 85%);
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(25px);
+
+    transition:
+        opacity 1.2s ease .6s,
+        transform 1.2s ease .6s;
+}
+
+#birthdayCelebration.show .birthday-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.birthday-small {
+    color: #b98da1;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+.birthday-message h2 {
+    color: #f8c5d9;
+    font-size: clamp(28px, 6vw, 46px);
+    font-weight: 400;
+    line-height: 1.25;
+
+    text-shadow:
+        0 0 20px rgba(246,182,208,.25);
+}
+
+.birthday-line {
+    margin: 25px 0;
+
+    color: #f6b6d0;
+    font-size: 25px;
+
+    text-shadow:
+        0 0 15px rgba(246,182,208,.4);
+}
+
+.birthday-message p {
+    color: #d3a6b8;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+
+/* 🌸 НЕЖНО-РОЗОВЫЕ КОНФЕТТИ */
+
+.confetti-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti {
+    position: absolute;
+    top: -30px;
+
+    width: 7px;
+    height: 12px;
+
+    background: #f6b6d0;
+
+    opacity: .75;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(540deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .birthday-button {
+        margin-top: 25px;
+    }
+
+    .birthday-message p {
+        font-size: 14px;
+    }
+
+    .confetti {
+        width: 6px;
+        height: 10px;
+    }
+}

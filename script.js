@@ -214,3 +214,143 @@ secretInput.addEventListener("keydown", (event) => {
     }
 });
 
+// 💗 СЧЁТЧИК НАШИХ ОТНОШЕНИЙ
+
+const relationshipStart = new Date("2025-12-07T07:30:00+03:00");
+
+function updateRelationshipCounter() {
+    const now = new Date();
+
+    let difference = now - relationshipStart;
+
+    if (difference < 0) difference = 0;
+
+    const totalSeconds = Math.floor(difference / 1000);
+
+    const days = Math.floor(totalSeconds / 86400);
+
+    const hours = Math.floor(
+        (totalSeconds % 86400) / 3600
+    );
+
+    const minutes = Math.floor(
+        (totalSeconds % 3600) / 60
+    );
+
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("counterDays").textContent = days;
+    document.getElementById("counterHours").textContent = hours;
+    document.getElementById("counterMinutes").textContent = minutes;
+    document.getElementById("counterSeconds").textContent = seconds;
+}
+
+updateRelationshipCounter();
+
+setInterval(updateRelationshipCounter, 1000);
+
+// 🎂 ФИНАЛЬНОЕ ПОЗДРАВЛЕНИЕ
+
+const birthdayButton = document.getElementById("birthdayButton");
+
+if (birthdayButton) {
+
+    birthdayButton.addEventListener("click", () => {
+
+        const celebration = document.createElement("div");
+
+        celebration.id = "birthdayCelebration";
+
+        celebration.innerHTML = `
+            <div class="confetti-container"></div>
+
+            <div class="birthday-message">
+
+                <div class="birthday-small">
+                    14.01.2009 ♡
+                </div>
+
+                <h2>
+                    В этот день появилась
+                    самая прекрасная девушка —
+                    ты, моя Илоночка ♡
+                </h2>
+
+                <div class="birthday-line">♡</div>
+
+                <p>
+                    Я хочу поздравить тебя с днём рождения
+                    и пожелать тебе бесконечного счастья,
+                    улыбок и исполнения самых заветных желаний.
+                </p>
+
+                <p>
+                    Спасибо тебе за то, что ты появилась
+                    в моей жизни. За каждый разговор,
+                    каждую улыбку и каждый момент,
+                    который мы разделили вместе.
+                </p>
+
+                <p>
+                    Я очень ценю тебя и хочу,
+                    чтобы ты всегда помнила:
+                    <strong>ты для меня особенная.</strong>
+                </p>
+
+                <p>
+                    Пусть впереди тебя ждёт огромное
+                    количество счастливых дней,
+                    а рядом всегда будут люди,
+                    которые любят тебя.
+                </p>
+
+                <div class="birthday-line">♡</div>
+
+                <p>
+                    <strong>
+                        С днём рождения,
+                        моя любимая Илоночка. ❤️
+                    </strong>
+                </p>
+
+                <p>
+                    Я тебя очень люблю. ♡
+                </p>
+
+            </div>
+        `;
+
+        document.body.appendChild(celebration);
+
+        requestAnimationFrame(() => {
+            celebration.classList.add("show");
+        });
+
+        const container =
+            celebration.querySelector(".confetti-container");
+
+        for (let i = 0; i < 80; i++) {
+
+            const piece = document.createElement("span");
+
+            piece.className = "confetti";
+
+            piece.style.left =
+                Math.random() * 100 + "%";
+
+            piece.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            piece.style.animationDelay =
+                Math.random() * 1.5 + "s";
+
+            piece.style.width =
+                (5 + Math.random() * 5) + "px";
+
+            piece.style.height =
+                (8 + Math.random() * 7) + "px";
+
+            container.appendChild(piece);
+        }
+    });
+}
