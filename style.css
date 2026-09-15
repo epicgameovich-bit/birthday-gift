@@ -1013,3 +1013,85 @@ button:hover {
     background: transparent;
 }
 
+/* Секретный вход */
+.secret-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at center,
+        rgba(220, 120, 170, 0.18),
+        transparent 45%),
+        #090609;
+    transition: opacity 0.8s ease;
+}
+
+.secret-box {
+    width: min(420px, 85%);
+    text-align: center;
+    padding: 40px 25px;
+}
+
+.secret-flower {
+    font-size: 55px;
+    color: #f6b6d0;
+    text-shadow:
+        0 0 8px #f6b6d0,
+        0 0 25px rgba(216,181,232,.8);
+    margin-bottom: 20px;
+}
+
+.secret-box h2 {
+    color: #f8c5d9;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.secret-box p {
+    color: #d9aabd;
+    margin-bottom: 25px;
+}
+
+.secret-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid rgba(246,182,208,.5);
+    border-radius: 30px;
+    outline: none;
+    background: rgba(255,255,255,.04);
+    color: #f8c5d9;
+    text-align: center;
+    font-size: 16px;
+}
+
+.secret-input::placeholder {
+    color: #a9788d;
+}
+
+.secret-button {
+    margin-top: 15px;
+    padding: 12px 30px;
+    border: 1px solid #f6b6d0;
+    border-radius: 30px;
+    background: transparent;
+    color: #f6b6d0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.secret-button:hover {
+    background: rgba(246,182,208,.12);
+    box-shadow: 0 0 20px rgba(246,182,208,.35);
+}
+
+.secret-error {
+    height: 20px;
+    margin-top: 12px;
+    color: #f29abb;
+    font-size: 13px;
+}
