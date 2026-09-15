@@ -156,3 +156,61 @@ photoImages.forEach((img, index) => {
     }
 });
 
+// Секретный вход
+const secretScreen = document.createElement("div");
+secretScreen.className = "secret-screen";
+
+secretScreen.innerHTML = `
+    <div class="secret-box">
+        <div class="secret-flower">✿</div>
+
+        <h2>Для тебя, Илоночка ♡</h2>
+
+        <p>Введи наше секретное слово</p>
+
+        <input
+            class="secret-input"
+            type="password"
+            placeholder="Секретное слово"
+        >
+
+        <br>
+
+        <button class="secret-button">
+            Открыть ♡
+        </button>
+
+        <div class="secret-error"></div>
+    </div>
+`;
+
+document.body.appendChild(secretScreen);
+
+const secretInput = secretScreen.querySelector(".secret-input");
+const secretButton = secretScreen.querySelector(".secret-button");
+const secretError = secretScreen.querySelector(".secret-error");
+
+// ЗДЕСЬ МОЖНО ПОМЕНЯТЬ ПАРОЛЬ
+const secretPassword = "071225";
+
+function checkSecret() {
+    if (secretInput.value === secretPassword) {
+        secretScreen.style.opacity = "0";
+
+        setTimeout(() => {
+            secretScreen.remove();
+        }, 800);
+    } else {
+        secretError.textContent = "Неверное слово ♡";
+        secretInput.value = "";
+    }
+}
+
+secretButton.addEventListener("click", checkSecret);
+
+secretInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        checkSecret();
+    }
+});
+
